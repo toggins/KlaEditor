@@ -191,6 +191,10 @@ function PropertiesWidget(_x, _y, _title, _marker = noone) : Widget(_x, _y) cons
 				marker: _marker,
 				value: _value,
 			}, function (_value) {
+				var _def = global.defs[? _value]
+				if _def != undefined and is_instanceof(_def, ObjectDef)
+					_value = _def.index
+				
 				try {
 					marker.values[value.index] = clamp(real(_value), -2147483648, 2147483647)
 					return true
