@@ -193,6 +193,18 @@ function LevelWidget(_x, _y) : Widget(_x, _y) constructor {
 		}
 		return false
 	})
+	_yy += 24
+	
+	push_button(_yy, "Ambush?", _level.flags & LevelFlags.AMBUSH, function () {
+		with global.level {
+			if (flags & LevelFlags.AMBUSH)
+				flags &= ~LevelFlags.AMBUSH
+			else
+				flags |= LevelFlags.AMBUSH
+			return (flags & LevelFlags.AMBUSH)
+		}
+		return false
+	})
 	_yy += 22
 	
 	height = _yy + 8

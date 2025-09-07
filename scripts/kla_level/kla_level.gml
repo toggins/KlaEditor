@@ -21,6 +21,7 @@ enum LevelFlags {
 	FUNNY = 1 << 6,
 	LOST = 1 << 7,
 	KEVIN = 1 << 8,
+	AMBUSH = 1 << 9,
 }
 
 global.markers = ds_list_create()
