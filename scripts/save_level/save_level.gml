@@ -12,10 +12,10 @@ function save_level(_filename) {
 	// Level
 	with global.level {
 		buffer_write_char(_kla, name, 32) // char[32]
-		buffer_write_char(_kla, texture, 8) // char[8]
-		buffer_write_char(_kla, next, 8) // char[8]
-		buffer_write_char(_kla, track[0], 8) // char[8]
-		buffer_write_char(_kla, track[1], 8) // char[8]
+		buffer_write(_kla, buffer_string, texture) // char*
+		buffer_write(_kla, buffer_string, next) // char*
+		buffer_write(_kla, buffer_string, track[0]) // char*
+		buffer_write(_kla, buffer_string, track[1]) // char*
 		buffer_write(_kla, buffer_u16, flags) // uint16_t
 		buffer_write(_kla, buffer_s32, round(size[0] * 65536)) // int32_t (Q16.16)
 		buffer_write(_kla, buffer_s32, round(size[1] * 65536)) // int32_t (Q16.16)
@@ -39,7 +39,7 @@ function save_level(_filename) {
 			buffer_write(_kla, buffer_string, def.name)
 			if is_instanceof(def, GradientDef) {
 				buffer_write(_kla, buffer_u8, DefTypes.GRADIENT)
-				buffer_write_char(_kla, def.sprite_name, 8)
+				buffer_write(_kla, buffer_string, def.sprite_name)
 				buffer_write(_kla, buffer_f32, x) // float
 				buffer_write(_kla, buffer_f32, y) // float
 				buffer_write(_kla, buffer_f32, x + image_xscale) // float
@@ -58,7 +58,7 @@ function save_level(_filename) {
 				}
 			} else if is_instanceof(def, BackdropDef) {
 				buffer_write(_kla, buffer_u8, DefTypes.BACKDROP)
-				buffer_write_char(_kla, def.sprite_name, 8)
+				buffer_write(_kla, buffer_string, def.sprite_name)
 				buffer_write(_kla, buffer_f32, x) // float
 				buffer_write(_kla, buffer_f32, y) // float
 				buffer_write(_kla, buffer_f32, depth) // float

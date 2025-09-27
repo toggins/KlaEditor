@@ -21,19 +21,15 @@ function load_level(_filename) {
 		buffer_delete(_kla)
 		exit
 	}
-	if buffer_read(_kla, buffer_u8) != MINOR_FILE_VERSION {
-		show_message($"Invalid minor version!")
-		buffer_delete(_kla)
-		exit
-	}
+	var _minor = buffer_read(_kla, buffer_u8)
 	
 	// Level
 	with global.level {
 		name = buffer_read_char(_kla, 32)
-		texture = buffer_read_char(_kla, 8)
-		next = buffer_read_char(_kla, 8)
-		track[0] = buffer_read_char(_kla, 8)
-		track[1] = buffer_read_char(_kla, 8)
+		texture = (_minor < 1) ? buffer_read_char(_kla, 8) : buffer_read(_kla, buffer_string)
+		next = (_minor < 1) ? buffer_read_char(_kla, 8) : buffer_read(_kla, buffer_string)
+		track[0] = (_minor < 1) ? buffer_read_char(_kla, 8) : buffer_read(_kla, buffer_string)
+		track[1] = (_minor < 1) ? buffer_read_char(_kla, 8) : buffer_read(_kla, buffer_string)
 		flags = buffer_read(_kla, buffer_u16)
 		size[0] = buffer_read(_kla, buffer_s32) / 65536
 		size[1] = buffer_read(_kla, buffer_s32) / 65536
@@ -53,7 +49,10 @@ function load_level(_filename) {
 		
 		switch _type {
 			case DefTypes.GRADIENT: {
-				buffer_read_char(_kla, 8)
+				if _minor < 1
+					buffer_read_char(_kla, 8)
+				else
+					buffer_read(_kla, buffer_string)
 				var _x1 = buffer_read(_kla, buffer_f32)
 				var _y1 = buffer_read(_kla, buffer_f32)
 				var _x2 = buffer_read(_kla, buffer_f32)
@@ -101,7 +100,10 @@ function load_level(_filename) {
 			}
 			
 			case DefTypes.BACKDROP: {
-				buffer_read_char(_kla, 8)
+				if _minor < 1
+					buffer_read_char(_kla, 8)
+				else
+					buffer_read(_kla, buffer_string)
 				var _x = buffer_read(_kla, buffer_f32)
 				var _y = buffer_read(_kla, buffer_f32)
 				var _z = buffer_read(_kla, buffer_f32)

@@ -1,5 +1,5 @@
 #macro MAJOR_FILE_VERSION 0
-#macro MINOR_FILE_VERSION 0
+#macro MINOR_FILE_VERSION 1
 
 #macro DEFAULT_LEVEL {\
 	name: "",\
