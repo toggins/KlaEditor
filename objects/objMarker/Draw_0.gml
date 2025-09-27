@@ -4,8 +4,8 @@ if is_instanceof(def, GradientDef) {
 	var _y1 = bbox_top
 	var _x2 = bbox_right
 	var _y2 = bbox_bottom
-	var _u = (_x2 - _x1) / texture_get_width(texture)
-	var _v = (_y2 - _y1) / texture_get_height(texture)
+	var _u = (_x2 - _x1) * texture_get_texel_width(texture)
+	var _v = (_y2 - _y1) * texture_get_texel_height(texture)
 	
 	draw_vertex_texture_colour(_x1, _y2, 0, _v, colors[2], alphas[2])
 	draw_vertex_texture_colour(_x2, _y2, _u, _v, colors[3], alphas[3])
