@@ -31,25 +31,25 @@ function LevelWidget(_x, _y) : Widget(_x, _y) constructor {
 	_yy += 24
 	
 	push_field(_yy, "HUD Texture", _level.texture, function (_value) {
-		global.level.texture = string_copy(_value, 1, 8)
+		global.level.texture = string_copy(_value, 1, 255)
 		return true
 	})
 	_yy += 24
 	
 	push_field(_yy, "Next Level", _level.next, function (_value) {
-		global.level.next = string_copy(_value, 1, 8)
+		global.level.next = string_copy(_value, 1, 255)
 		return true
 	})
 	_yy += 32
 	
 	push_field(_yy, "Primary Track", _level.track[0], function (_value) {
-		global.level.track[0] = string_copy(_value, 1, 8)
+		global.level.track[0] = string_copy(_value, 1, 255)
 		return true
 	})
 	_yy += 24
 	
 	push_field(_yy, "Secondary Track", _level.track[1], function (_value) {
-		global.level.track[1] = string_copy(_value, 1, 8)
+		global.level.track[1] = string_copy(_value, 1, 255)
 		return true
 	})
 	_yy += 32
