@@ -30,6 +30,8 @@ function load_level(_filename) {
 		next = (_minor < 1) ? buffer_read_char(_kla, 8) : buffer_read(_kla, buffer_string)
 		track[0] = (_minor < 1) ? buffer_read_char(_kla, 8) : buffer_read(_kla, buffer_string)
 		track[1] = (_minor < 1) ? buffer_read_char(_kla, 8) : buffer_read(_kla, buffer_string)
+		if (_minor >= 2)
+			track[2] = buffer_read(_kla, buffer_string)
 		flags = buffer_read(_kla, buffer_u16)
 		size[0] = buffer_read(_kla, buffer_s32) / 65536
 		size[1] = buffer_read(_kla, buffer_s32) / 65536

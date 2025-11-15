@@ -56,6 +56,12 @@ function Folder(_name, _items = undefined, _from = undefined) constructor {
 					
 					case DefTypes.BACKDROP: {
 						_def = new BackdropDef()
+						
+						var _icolor = _item[$ "color"]
+						if is_array(_icolor) and array_length(_icolor) >= 4 {
+							_def.color = make_color_rgb(_icolor[0], _icolor[1], _icolor[2])
+							_def.alpha = _icolor[3] / 255
+						}
 						break
 					}
 					

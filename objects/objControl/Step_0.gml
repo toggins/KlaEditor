@@ -88,6 +88,9 @@ if not instance_exists(_highlighted) {
 									flags |= (_flag.default_value * _flag.bit);
 									++i
 								}
+							} else if is_instanceof(_def, BackdropDef) {
+								image_blend = _def.color
+								image_alpha = _def.alpha
 							}
 						}
 					}

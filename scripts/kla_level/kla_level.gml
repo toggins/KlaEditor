@@ -1,11 +1,11 @@
 #macro MAJOR_FILE_VERSION 0
-#macro MINOR_FILE_VERSION 1
+#macro MINOR_FILE_VERSION 2
 
 #macro DEFAULT_LEVEL {\
 	name: "",\
 	texture: "",\
 	next: "",\
-	track: ["", ""],\
+	track: ["", "", ""],\
 	flags: 0,\
 	size: [640, 480],\
 	bounds: [0, 0, 640, 480],\

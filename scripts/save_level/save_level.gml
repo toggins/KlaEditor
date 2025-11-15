@@ -16,6 +16,7 @@ function save_level(_filename) {
 		buffer_write(_kla, buffer_string, next) // char*
 		buffer_write(_kla, buffer_string, track[0]) // char*
 		buffer_write(_kla, buffer_string, track[1]) // char*
+		buffer_write(_kla, buffer_string, track[2]) // char*
 		buffer_write(_kla, buffer_u16, flags) // uint16_t
 		buffer_write(_kla, buffer_s32, round(size[0] * 65536)) // int32_t (Q16.16)
 		buffer_write(_kla, buffer_s32, round(size[1] * 65536)) // int32_t (Q16.16)

@@ -52,6 +52,12 @@ function LevelWidget(_x, _y) : Widget(_x, _y) constructor {
 		global.level.track[1] = string_copy(_value, 1, 255)
 		return true
 	})
+	_yy += 24
+	
+	push_field(_yy, "Bowser Track", _level.track[2], function (_value) {
+		global.level.track[2] = string_copy(_value, 1, 255)
+		return true
+	})
 	_yy += 32
 	
 	push_field(_yy, "Width", _level.size[0], function (_value) {
